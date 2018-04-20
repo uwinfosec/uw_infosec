@@ -1,0 +1,6 @@
+This assignment was locked Mar 9 at 5pm.
+You’re going to hack into an intentionally vulnerable virtual machine — Metasploitable (Links to an external site.)Links to an external site.. Then you’re going to do it twice more via different methods and at least one off those will be the into root account.
+
+If the target was used in an in-class demo, then the technique used during the demo is off limits.
+
+You will write each one up as a bug -- this should include what the expected behavior is (eg. access denied), what anomalous behavior you observed (eg. a root prompt) and the steps the reproduce the bug.

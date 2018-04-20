@@ -1,0 +1,28 @@
+This assignment was locked Mar 9 at 5pm.
+This lab is a prelude of sorts to the penetration testing lab. It's designed to make sure you're comfortable setting up virtual lab environments and understand how system services and networks work.
+
+To complete this lab, you will need VMWare. If you are using Windows, the free version should work fine:
+
+https://my.vmware.com/en/web/vmware/free#desktop_end_user_computing/vmware_workstation_player/14_0 (Links to an external site.)Links to an external site.
+
+If you are on a Mac, you'll need VMWare Fusion. It is not free, but has an academic price:
+
+https://www.vmware.com/products/fusion.html (Links to an external site.)Links to an external site.
+
+Additionally, please download an Ubuntu Server ISO. I use the LTS version, but it really shouldn't matter for the lab:
+
+https://www.ubuntu.com/download/server (Links to an external site.)Links to an external site.
+
+Please note that these exercises will require significant free disk space and memory. If you have less than four gigs of memory or 10 gigs of disk space on your laptop, you should look into an iSchool loaner.  Ideally, you have 8 gigs of memory and 15-20 free gigs of space.
+
+Finally you will need three pieces of software installed on your laptop directly (or you can use Kali Linux if you're already comfortable with it):
+
+SSH: If you're on Mac, it's built-in. On PC, you can use PuTTY:
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html (Links to an external site.)Links to an external site.
+nmap: https://nmap.org/download.html (Links to an external site.)Links to an external site.
+A web browser of your choice
+Once the you have all of the components, the lab is simple. You're going to set up a virtual network in VMWare that is NAT'ed to the internet. You will then install an Ubuntu Server on it. The server will contain:
+
+A Remote Management Service (SSH Server)
+Wordpress and all of the components and services necessary to run it
+That's it. For documentation, list the services that you had to install to get Wordpress running. Include a screen capture of your browser interacting with Wordpress. Also include an map scan of the Wordpress server. describe what each of the open network ports is for.

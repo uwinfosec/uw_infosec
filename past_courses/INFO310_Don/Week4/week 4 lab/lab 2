@@ -1,0 +1,16 @@
+This assignment was locked Mar 9 at 5pm.
+This lab is to create a threat model for a basic Content Management Server (CMS). The CMS must have three user roles -- the Administrator that manages the CMS, the Editor who provides content, and the Reader who consumes content. It must use a database to store content and configuration. 
+
+The Level 0 diagram that was presented in Monday's lecture is a good starting point:
+
+https://canvas.uw.edu/files/45991678/download?download_frd=1
+
+It is a Microsoft Threat Model Tool file. You can get the Threat Model Tool here:
+
+https://www.microsoft.com/en-us/download/details.aspx?id=49168
+
+Or, if you prefer, I've created a more concise version of the lab as a Word Document.
+
+You don't have to use the diagram or the threat model tool. You can sketch your diagram on the back of a napkin -- that's fine. Just make sure it passes the validation criteria and that you've identified all the relevant threats via the STRIDE per element technique.
+
+As usual, accepted file formats are Word or PDF.

@@ -1,0 +1,6 @@
+This assignment was locked Mar 9 at 5pm.
+There are five very vulnerable web applications installed on the Metasploitable2 image; you’re going to attack one or all of them. Your goal is to find ten web application vulnerabilities. You must find at least three type of vulnerabilities.
+
+ 
+
+Your write-up should include steps to reproduce the issue, not just a description. Double check your repro steps -- following them exactly should reproduce the issue. If it doesn't, you won't get credit.
