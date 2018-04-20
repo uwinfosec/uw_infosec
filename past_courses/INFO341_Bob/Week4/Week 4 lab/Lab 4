@@ -1,0 +1,25 @@
+Lab 4
+
+1. Given IPv4 address 192.168.1.15 / 24    find Subnet Mask, Network ID, First IP Address, Last IP Address, and Broadcast Address
+
+2. Given IPv4 address 182.64.251.144 / 27   find Subnet Mask, Network ID, First IP Address, Last IP Address, and Broadcast Address
+
+3. Given IPv4 address 164.32.11.32 / 30 find Subnet Mask, Network ID, First IP Address, Last IP Address, and Broadcast Address
+
+4. Given IPv4 address 142.11.23.45 / 17 find Subnet Mask, Network ID, First IP Address, Last IP Address, and Broadcast Address
+
+5. Given IPv4 address 10.215.2.20 / 8  find Subnet Mask, Network ID, First IP Address, Last IP Address, and Broadcast Address 
+
+ 
+
+This web-app simply translates an IP address to binary.
+
+https://www.browserling.com/tools/ip-to-bin (Links to an external site.)Links to an external site.
+
+If you aren't sure what a subnet is, this may help you understand. 
+
+https://www.iplocation.net/subnet-mask (Links to an external site.)Links to an external site.
+
+ 
+
+Turn in text file with answers of the 5 questions above.

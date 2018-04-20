@@ -1,0 +1,89 @@
+Nmap Lab
+
+Installation Links
+
+Mac: https://nmap.org/book/inst-macosx.html (Links to an external site.)Links to an external site.
+
+Linux: https://www.howtoforge.com/tutorial/nmap-on-linux/ (Links to an external site.)Links to an external site.
+
+Windows: https://nmap.org/download.html (Links to an external site.)Links to an external site.
+
+Read about Nmap: https://nmap.org/ (Links to an external site.)Links to an external site.
+
+ 
+
+Lab Introduction
+
+Nmap is a Reconnaissance tool. 
+
+What is Reconnaissance? reconnaissance is a type of computer attack in which an intruder engages with the targeted system to gather information about vulnerabilities. In other words, you are checking for which hosts (IP addresses) are running which services with which version in attempt to hack into other computers.
+
+These are most common Scan types of Nmap tool.
+
+TCP Full Scan
+ 
+
+TCP Full connect Scan fully establishes connection with a remote host.
+TCP Full connect Scan does not need Root Privilege Why is this good?
+TCP SYN Scan 
+
+Root privilege required
+Different from -sT option because this does not actually establish connection to a remote host.
+SYN scan is more sneaky because this doesn’t actually establish connection with a remote host. It cancels connection before establishing connection.
+Open
+Closed
+
+Filtered: not responding
+
+It is important for an attacker to know in depth how nmap works in order to not get detected.
+One of the things that nmap does for you is ICMP or Ping each ip address first to see if the host is up. If not, it goes on to other IP address despite the fact that your command tells nmap to scan all 65535 ports of 192.168.1.0/24 range of ip addresses
+Ex) nmap -sS 192.168.1.15 -p 1-1000
+How many TCP - SYN packets will attacker send if the host 192.168.1.15 is alive?
+How many TCP - SYN packets will attacker send if the host 192.168.1.15 is not alive?
+Nmap in general is Very Noisy
+It is easy to detect because it is not normal for one computer to contact multiple other computers’ ports.
+Thus if you are the attacker,
+you should know how to disable Reverse DNS lookups (which is another default in nmap scan and easiest way for network admins to detect nmap activity),
+you should know how to send packets at much slower rate to avoid getting detected.
+https://nmap.org/book/man-performance.html (Links to an external site.)Links to an external site.
+Option --max-rate allows you to send very specific amount of packets each second. This allows attackers to be more sneaky.
+ASSIGNMENT
+
+How would you detect a Reconnaissance activity in your network? Give at least two ways how you might detect nmap Reconnaissance activity, and explain why this should work.
+Submit a text file of two ways you could detect Reconnaissance activity
+Scan “scanme.nmap.org” with nmap
+Do not send over 100 packets to this site. If you send more than 100, they will block you from scanning their site.
+Some examples of nmap commands => https://highon.coffee/blog/nmap-cheat-sheet/
+You will write a Reconnaissance report on services that I want you to check on this web server (scanme.nmap.org)
+Services I want you to check:
+DNS (UDP) - use UDP scan (-sU option is UDP scan)
+SSH
+Telnet
+RDP
+FTP
+HTTP
+HTTPS
+Kerberos Server
+Make a report of each of the services above as either Open / Closed / Filtered
+You could use -oN option to create a text output automatically after scan finishes.
+Submit a text file of the scan.
+Extra Credit Opportunity! (+2)
+
+You are the hacker. You have compromised a computer in a company network with root privilege.
+Company network is 10.10.0.0/16 network
+You have no idea how many computers are in this network
+In order to hack into more computers, you need to do nmap scan of the network to know IP addresses of computers in this network, Operating Systems of each hosts, and which services each host is running.
+Restrictions!
+No more than 1000 requests per hour
+DNS lookup should be disabled
+Ping Scan FIRST, and figure out all live hosts
+No Connection Retries if a host is not responsive
+Only scan Well Known Ports (1-1023)
+Grab IP addresses, OS, and services of all live hosts
+Be SNEAKY
+Give me all the commands you would use in this situation
+Submit a text file of nmap commands with explanations of each options you added
+I will grade based on the restrictions above.
+Next Week, I will set a virtual environment where students can log in and run these commands! 
+
+So if you have time, think about extra-credit solutions, so you can participate in next week lab.
