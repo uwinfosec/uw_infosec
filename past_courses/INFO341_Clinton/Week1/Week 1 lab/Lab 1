@@ -1,0 +1,21 @@
+The purpose of this lab is for students to become acquainted with basic tools that will be useful in working with networks and to gather the broader materials and tools that will be required to complete the labs and assignments throughout the class.
+
+Get acquainted with the built-in tools for networking on the computer you will use most for the course (a good search engine will be your best friend). There will be multiple ways to complete this task. Try to find a solution using the GUI and the command line.
+
+Part I
+Use these tools to find the following configuration details:
+
+IP addresses (version 4 or 6) that are currently assigned to your device
+Public IP address seen by servers on the Internet (may be different than your assigned IP)
+MAC address for your active network interface
+IP and MAC addresses for your default gateway
+Part II
+Review the list of required and recommended materials for this course and order what you will need when we start with the Raspberry Pi exercises in a couple weeks. If you have questions or concerns (including cost of materials), please contact the instructor and TA for further guidance.
+
+Download and install a local copy of Wireshark (with GUI). Wireshark is a powerful tool that we will use frequently throughout the class. Make sure that Wireshark runs without errors (you may need to launch it as an administrator or with elevated privileges). Keep an eye out for additional resources to help you become acquainted with the tool.
+
+Part III
+Turn in a short lab report, including the data you gathered in part I and answers to the following questions:
+
+Brief description of the tools and process you used to complete Part I
+Challenges you encountered throughout the assignment and whether you were able to overcome them 

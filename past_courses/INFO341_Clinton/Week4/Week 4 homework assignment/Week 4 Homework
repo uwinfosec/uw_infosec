@@ -1,0 +1,126 @@
+Before you Begin
+Set up Raspbian and ensure that you can connect directly to the Pi via a point-to-point Ethernet link and that the Pi can connect to wireless. 
+
+Objective
+In this assignment, you will be configuring the Pi as a simple Internet gateway that routes traffic between an isolated, wired LAN and an Internet-connected wireless network. Practically speaking, you'll be tethering your computer to the Pi and using it to access the rest of the Internet.
+
+Whether it is immediately obvious or not, this architecture has practical applications. It is not always a good idea to connect your computer directly to an untrusted network. With a few more components, the Pi provides a simple firewall that can protect against many types of threats. Further, the Pi can be used to tunnel your traffic through a personal VPN, ensuring that that it cannot be intercepted or tampered with on a public network or local ISP.  
+
+Overview
+Determine a local address range
+Configure static addresses for your devices
+Configure NAT and packet forwarding rules
+Enable packet forwarding settings within Raspbian
+Install and configure DHCP to simplify setup for clients
+Details
+Note: Throughout the instructions, we'll refer to the wired interface as LAN and the wireless interface as the WAN. Your configuration files will reflect the Raspbian-assigned interface names, such as: eth0, wlan0, and usb0.
+
+Determine a Local Address Range
+Select a base network from RFC 1918 private address allocations. Extend the network prefix (add more bits) to create a subnet that supports at least 14 and no more than 64 valid client addresses. You will use these addresses in your initial static configuration and again within DHCP.
+
+Configure Static Addresses for your Devices
+Configure a static address on the LAN interface of the Raspberry Pi. Other hosts will see this as the target address for the default gateway. You may need to search online if you haven't picked up how to do this from class already. 
+
+You don't need to, and probably shouldn't, add a gateway or name server on this interface. The wireless interface is already configured with a gateway and DNS (from DHCP on your home or school network). Make sure your configuration is persistent, i.e., that the addresses are still configured after a reboot.
+
+For the time being, configure your computer with a static network address, a default route to the Pi, and static DNS entries of 128.95.112.1 and 128.95.120.1 (UW DNS servers if you're on campus) or 8.8.8.8 (Google DNS servers if you're off campus). 
+
+Note: Most administrators will place gateways on the first or last address of the subnet. Do not deviate from this convention without good reason.
+
+Configure NAT and Packet Forwarding Rules
+We will leverage network address translation (NAT) to access public networks with RFC 1918 addresses. In this scenario, your Pi will be translating source addresses from the LAN to masquerade with the IP address assigned to the WAN port. This setup is a special case of source NAT (SNAT) in that many private IP addresses will be mapped to one public address on the external interface. To accommodate, the Pi will need to monitor the state of each connection and other network traffic so that it can route to the correct host on the internal network when incoming traffic is received.
+
+Working with Iptables
+NAT functionality is supported natively in Linux through the netfilter firewall. We'll use a common Linux tool known as iptables to manage this mechanism. Iptables defines rules in a hierachical structure that are used to filter and manipulate packets. Iptables and netfilter are quite complex. Rather than bog you down in comprehensive details, we'll stick with a basic explanation.
+
+Iptables uses a basic structure called a table to group rules according to their main function. Common tables include nat, filter, mangle, and raw. For this exercise, we'll focus on the nat table, which is responsible for address translation, and the filter table, which gives us fine-grained control over traffic passing through our network stack. We specify tables in our rules using the -t option, but we can omit it if we want to use the filter table.
+
+Within each table, rules are assigned to a structure called a chain. The default chains correspond to different points in the packet lifecycle. Within the filter table, we will often work with the INPUT, OUTPUT, and FORWARD chains. These chains correspond to packets sent to the node, packets being sent by the node, and packets being routed through the node respectively. Within the nat table, our current focus will be on the POSTROUTING chain. This chain represents the last set of rules that will be evaluated before forwarding a filtered packet, which is where we want to apply address mappings related to SNAT and masquerading. In contrast, the PREROUTING chain is applied before any other process and is used to specify DNAT rules.
+
+The order of rules in each chain matters. Once a rule is matched, iptables will jump to a specified action (or another chain) without processing the other rules. We can append new rules to the end of a chain using the -A option or insert rules at the beginning of a chain using -I. Likewise, we can delete a rule from a chain by specifying -D and providing a numeric index to the rule.
+
+iptables -t nat -A POSTROUTING       # Append a rule to the POSTROUTING chain of the nat table
+iptables -D FORWARD 1                   # Delete the first rule from the FORWARD chain of filter
+In addition to specifying table and chain, our rules need to describe the criteria associated with packets we want to filter or manipulate. In this exercise, our primary consideration is the origin or destination of a packet. For example, we want to translate the address of packets being forwarded to the WAN interface. We can specify this restriction in our nat rule by providing the -o option with the name of the corresponding interface. Likewise, we can instruct iptables to look at packets coming from the LAN and to the WAN by combining the -i option with -o in our filter rules.
+
+iptables -t NAT -A POSTROUTING -o wan
+iptables -A FORWARD -i lan -o wan
+Iptables is stateful, meaning that it is even possible to specify rules based on the relationship of one packet to others that have been received. This feature shapes our rules in two ways. First, you'll see that our masquerading rule also handles the de-masquerading process for incoming packets. Second, you'll see that we can base filtering decisions on connection state itself. While it's appropriate for NAT routers to allow outgoing traffic, we typically want to place greater restrictions on incoming traffic. In this assignment, we'll block incoming traffic unless it relates to existing connections from the LAN. To accomplish this feat, we will make use of netfilter's connection tracking extensions which are specified with the -m conntrack and --ctstate RELATED,ESTABLISHED options
+
+The last component of an iptables rule is specified using the -j option. In a simple configuration, this option provides the action to be carried out against the packet after the match. In more complex configurations, -j can point to a user-defined chain containing additional rules. As you gain experience, you'll see that this provides a greater degree of organization and control flow. While we will encounter the MASQUERADE option in our nat rules, we will more frequently with basic ACCEPT and DROP rules within the filter context. Bringing this option together with the earlier examples, we see that we can express complete rules using the following syntax:
+
+iptables -t nat -A POSTROUTING -o wan -j MASQUERADE
+iptables -A FORWARD -i wan -o lan -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+When you write iptables rules, keep in mind the default actions that will be taken if no other rule matches in a chain. Default actions are configurable through policies that are defined for each chain. From a security point-of-view, it's a good practice to set default policies to block traffic that wasn't explicitly allowed.
+
+iptables -P FORWARD DROP  # Don't forward packets unless there was an explicit rule match
+Be careful, however, that you don't lock yourself out by a bad combination of rules and policies. For example, setting -P INPUT DROP and -P OUTPUT DROP will block all inbound and outbound traffic to your Pi if you don't already have rules set up to explicitly allow SSH or other tools.
+
+Configure NAT and basic firewall rules
+Note: Be sure to review earlier note about substituting the actual interface names in place of the lan/wan placeholders in my rules.
+
+You can define iptables rules from the command line by calling the sudo iptables with the appropriate options, however, these rules will not persist after a reboot. To save your current rules for later use, you can call sudo iptables-save > output_file. These rules can be loaded by calling sudo iptables-restore < input_file from the commandline or a boot script.
+
+We have provided you a rules template (see resources) that fills in many of the options. You can fill in the remaining items on this template or build the ruleset from scratch using the process described above. In either case, you test the rules out by manually loading them with iptables-restore as shown above. This has to be done every time you boot (which we fix next).
+
+To load the rules automatically at boot, create a script in /etc/network/if-pre-up.d/ as follows:
+
+#!/bin/sh
+iptables-restore < /etc/iptables.rules
+exit 0
+In this example, we have stored rules in /etc/iptables.rules. The script is called iptables-load and will be called automatically when the network interface is enabled (due to being saved in this location). In order for it to execute, it must have permissions set to allow execution by calling sudo chmod +x /etc/network/if-pre-up.d/iptables-load. 
+
+You can check that this is working by running sudo iptables save after you connect to SSH. If you don't see your rules, something has gone wrong. This may be a problem of file ownership, which can be fixed by calling sudo chown root:root /etc/network/if-pre-up.d/iptables-load. Double check as well that you have stored your rules in the location specified by the script. If you have the rules in your home folder instead, you can move them by calling sudo mv ~/iptables.rules /etc/iptables.rules.
+
+Your final rules must meet the following specification:
+
+Create a default policy on the POSTROUTING chain of the nat table to drop all packets.
+Append a new rule to the POSTROUTING chain that masquerades outbound packets on the WAN interface.
+Set the default policy for the FORWARD chain of the filter table to drop all packets.
+Create a rule that accepts outbound packets being received on the LAN interface and sent to the WAN.
+Create a rule to accept inbound packets that are related to other packets originating from the LAN or part of established connections.
+While best practice would have us further configure the firewalls for the internal and external interfaces on the Raspberry Pi, we will save this step for a future assignment.
+
+Enable Packet Forwarding in Raspbian
+Once you are confident that you have set up NAT and filtering properly within iptables, you need to instruct the Linux kernel to begin forwarding packets. You can enable the setting temporarily from the command line by calling sudo sysctl -w net.ipv4.ip_forward=1, but it will not persist across reboots. Make this change persistent inside /etc/sysctl.d/99-sysctl.conf by setting net.ipv4.ip_forward=1 (the rule is already included in the file but commented out).
+
+Test your Configuration
+You should be able to access external networks by way of the Raspberry Pi. Disable your main wireless or wired network so that the Pi is your only route to the Internet. Try connecting to a well-known website. From the command line, run a traceroute (tracert on Windows) to confirm that the Pi is providing a route.
+
+If you run into problems here, there are a few points to check. First, try to ping a known address such as 8.8.8.8 from your computer. This will tell you whether or not you have connectivity outside your network. If you're at UW, try pinging 128.95.112.1, to determine whether you can access hosts on campus. You may also try pinging a known domain name like amazon.com (and washington.edu if you're on campus).
+
+If you can't ping anything, you may have an issue with the network configuration on your computer. Try pinging the static address you created for the Pi. If this fails with no route to host, go back and make sure you set up the Pi and your computer correctly.
+If you can ping by IP address, but not name, you have an issue with DNS. Both Apple and Microsoft will allow you to add a static DNS server to a network interface. Check that you've done this as described above.
+If you're on campus and find that you're limited to pinging UW IP addresses and DNS, your issue is probably registration of the Pi on the campus network. Open a web browser and try to access https://weblogin.washington.edu (Links to an external site.)Links to an external site.. Now, try to access an external site. If none of this works, go back and review the section about static configuration on your computer and the Pi.
+If you're able to ping your Pi by it's IP and you're certain that you've set up your local network correctly, go back and confirm that the Pi has forwarding enabled for IP and that your iptables rules are loading. 
+Install and Configure DHCP
+For this part of the exercise, we'll use the isc_dhcp_server. If you are feeling adventurous, you can also configure dhcp using the dnsmasq project. The ISC server is available in apt repositories, so it can be installed using:
+
+sudo apt-get update
+sudo apt-get install isc-dhcp-server
+Using the resources provided or other tutorials, configure the DHCP server to distribute addresses within your pre-defined address range. You Pi will keep it's static address, so be sure that you exclude the address from the DHCP pool.
+
+Remove the static IP settings and DNS configuration from your computer and enable DHCP. If DHCP is functioning correctly, your host will obtain a dynamic address. If DHCP fails, you may need to set up the static address again to troubleshoot. 
+
+Note: Be sure to define a nameserver in the DHCP settings, or else your clients will have to manually configure their own. You can use UW (128.95.112.1 and 128.95.120.1) name servers or Google (8.8.8.8) again. Pay close attention to syntax. A misplaced space or bracket may cause DHCP to fail.
+
+Submission
+Document your configuration, including the settings for the LAN interface, DHCP, and iptables. Remember that you can use scp to copy files to your computer. You do this from your computer, e.g., running scp pi@raspberrypi.local:/etc/network/interfaces networkinterfaces.
+
+Please don't submit the entire file, just the filename and the changes you made.
+
+Answer the following questions:
+
+Consider your network mask in relation to the base network you selected from RFC 1918 address space.
+How many distinct subnets can you create in the same address range?
+How many hosts are available on each subnet?
+What is the broadcast address for your subnet?
+Why can't RFC 1918 addresses be used to communicate directly with Internet resources. How does NAT overcome this limitation on behalf of clients?
+Identify a Raspbian command to view the current routing table. Identify the line from your routing table that describes the default route for the device.
+What commands can you use to see detailed depiction of the current iptables ruleset?
+Which filter chains contain rules related to the SSH connection we use to manage the Pi?
+Why do you think we set the default policy to DROP on the FORWARD and MASQUERADE chains?
+Imagine that you set the default policy for all filter chains to DROP without creating any rules to accept traffic.
+How would this impact your ability to manage the Pi remotely?
+Would the Pi continue to function correctly as a DHCP server?
+What happens to the default policy when you tell iptables to flush a group of rules? Why does this matter?

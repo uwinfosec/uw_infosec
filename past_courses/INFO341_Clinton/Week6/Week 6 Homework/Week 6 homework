@@ -1,0 +1,88 @@
+Before You Begin
+It's a good practice to review the configuration of each device and reset to a predictable state before you start the assignment. For the most part, this means that we're removing static address assignments on devices that should be getting their configuration from DHCP. We also want to disable Internet Connection Sharing, if it's enabled already, on our main computer. These settings are a common source of frustration.
+
+Mac/PC
+Ethernet configured for DHCP
+Remove static DNS addresses if applicable
+Disable Internet Connection Sharing
+Raspberry Pi 3
+Ethernet configured as static (LAN)
+Wireless configured properly (WAN)
+DHCP server enabled
+IP forwarding and NAT are configured in iptables
+Raspberry Pi Zero
+Ethernet (usb0) configured for DHCP
+Wireless (wlan0) is disabled
+If you do not have a Pi Zero, you can substitute another device by attaching a USB Ethernet adapter to the Pi 3.
+
+Resources
+https://wiki.linuxfoundation.org/networking/bridge
+
+Overview
+Examine the internal state of the router/NAT
+Extend your LAN with a bridge interface
+Create a baseline firewall ruleset to protect the LAN
+Configure an internal DNS resolver
+Details
+Part 1: Examine the internal state of router/NAT
+Before you proceed setting up new functionality, you should take a moment to explore the work you completed in the last project, making sure that you understand how the router works at a basic level.
+
+Review the state of DHCP leases and the addresses that have been assigned to LAN hosts.
+
+cat /var/lib/dhcp/dhcpd.leases
+Review the IPv4 routing tables on the Pi and identify the entries that allow you to communicate on your local network and to forward packets across the Internet. There are several ways to accomplish this task. You should be able to find a solution without much trouble by consulting your search engine.
+
+Since routing on the Pi involves address translation between private address space and a public IP, you may also want to take a closer look at the NAT mappings. You can do this by installing the netstat-nat package.
+
+sudo apt-get update
+sudo apt-get install netstat-nat
+Review netstat-nat's runtime options by calling man netstat-nat. The -N option will allow you to review a list of masqueraded connections and all associated parameters. Note that requesting low-level information about routed traffic requires administrative privileges, so apply sudo accordingly.
+
+Review each table in iptables with the options -L -v -n. These options will display all parts of the rule in addition to a packet/byte counter that tells you how often the rule is being applied.
+
+Briefly describe the function of NAT, using output from netstat-nat to illustrate as needed.
+
+Part II: Extend the LAN with a layer-2 bridge
+Recall that routing is network layer functionality. Let's compare this our current functionality to what occurs when we extend the multi-host layer-2 network. We'll use Linux bridging to attach a Raspberry Pi Zero (or another host attached via USB Ethernet) to the existing LAN subnet. This process will require you to install the bridge-utils package and to set up a bridge interface in /etc/network/interfaces. Refer to https://wiki.debian.org/BridgeNetworkConnections (Links to an external site.)Links to an external site. for more details on this configuration, but pay attention to the details specified below.
+
+Create a new bridge interface, e.g., br0
+Set eth0 and usb0 to manual
+Move static IP configuration to br0
+/etc/default/isc-dhcp-server
+Set the INTERFACES variable to br0 only, to ensure that DHCP does not run outside the LAN
+Update iptables rules to use br0 as the LAN interface
+NOTE: If eth0 was previously configured in dhcpcd.conf, migrate those settings to /etc/network/interfaces and br0. This will eliminate delays you might be experiencing at boot. Since dhcpcd launches after isc_dhcp_server, the server will initially fail. Setting the static IP address in /etc/network/interfaces ensures that eth0/br0 is properly configured when Linux launches the DHCP daemon.
+
+You will need to reboot your Pi 3 to refresh the configuration. Ensure that your Pi Zero is already powered on and connected via USB. It's preferable to have a separate power cable rather than powering the Pi Zero over the USB of the Pi 3.
+
+Before you proceed any further, verify that routing is still working. If you are able to test successfully, you may proceed to check the configuration of your bridge by calling brctl show.
+
+If everything aligns, you will see an entry for br0 containing both eth0 and usb0. But don't fret if usb0 is missing. Network interfaces must be active to be included in a bridge. If one of the interfaces was offline, e.g., because the Pi Zero is powered from the Pi 3, you'll need to add it manually to the bridge using the brctl addif command. Consult man brctl for more details.
+
+Once the bridge is configured properly, you should be able to ssh from your attached PC/Mac to the Raspberry Pi.
+
+We can gather additional information about our bridges using the following brctl commands.
+
+brctl showmacs br0
+brctl showstp br0
+The second command shows the spanning tree status of the bridge interfaces. Spanning tree protocol is used to prevent forwarding loops in switching infrastructure. While we aren't going to worry about loops in this setup, this output does provide valuable details, such as the current state of the interface ports that make up the bridge.
+
+Submit a copy of your configuration and the output of the brctl show and brctl showstp commands. Briefly explain the difference between the way traffic moves between interfaces on a bridge versus between interfaces on different networks.
+
+Part III: Create a baseline firewall ruleset
+Review the tutorial provided at https://www.digitalocean.com/community/tutorials/how-to-choose-an-effective-firewall-policy-to-secure-your-servers (Links to an external site.)Links to an external site..
+
+Using the tools that we have explored throughout the class, e.g., netstat and Wireshark, generate requirements for firewall rules on the INPUT and OUTPUT filter chains. Remember that these chains govern the traffic to and from local processes and that your requirements need to consider both sides of the firewall (LAN and WAN). Be sure to include management services like SSH and other services that we have deployed on the Pi, including DHCP and DNS (part IV of this homework). 
+
+For now, keep the default ACCEPT policy on your FILTER chain, but create a set of new rules to accept traffic associated with your requirements. When possible, try to leverage the RELATED,ESTABLISHED state to approve traffic rather than creating explicit rules for every scenario.
+
+Create an additional rule to log packets that do not match any other default rules. Using the logs and iptables packet counters to confirm that your rules are working properly. In the next homework, we will set a default DROP policy and block IPv6 traffic. If your rules are incorrect, you're likely to lock yourself out of your device.
+
+Test your rules thoroughly and review the logs to identify any potential oversights. Submit a list of your requirements and a copy of your final iptables rules.
+
+Part IV: Configure an internal DNS cache
+Set up a DNS cache and internal zone using BIND or  DNSMasq. You will need to research how this is done, though there are plenty of existing tutorials to help you out, e.g., https://www.theurbanpenguin.com/raspberry-pi-dns-server/ (Links to an external site.)Links to an external site.. Be sure to adapt instructions to your current setup, e.g., use the ISC DHCP Server you set up in HW 1 instead of setting up DNSmasq to serve DHCP. 
+
+Create an internal zone under the .i341 root zone and create an entry for your Pi. Pick a unique name for your zone so that you are unlikely to conflict with your classmates.
+
+Verify that external hosts receive the correct DNS server from DHCP and can resolve public domain names as well as the hostname for your Pi. Briefly describe the steps you took to configure DNS caching and your zone. Include the relevant parts of your configuration files.

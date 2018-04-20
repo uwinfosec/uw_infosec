@@ -1,0 +1,28 @@
+Part I
+
+Setup GeoIP functionality in Wireshark and implement the following filters:
+
+All traffic from the United States
+All traffic going to a destination in Mountain View, CA
+ 
+
+Part II
+
+Using the following capture file, look for a HTTP stream where a PDF was transmitted.
+
+Explore Wireshark and find a way to extract a PDF file from HTTP traffic.
+
+lab2-capture.pcapng
+
+ 
+
+Part III
+
+Turn in a short lab report, including answers to the following questions:
+
+In short paragraph, describe the steps to setup GeoIP functionality in Wireshark
+What filter command did you use to narrow your report?
+In short paragraph, describe the steps to extract PDF file from HTTP traffic using Wireshark
+Please be sure to include your name on your report. 
+
+ 

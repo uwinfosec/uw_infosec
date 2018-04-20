@@ -1,0 +1,13 @@
+i341 Week 3 Lab
+
+Complete the following tasks and submit a short lab report by the due date according to the instructions below.
+
+Follow the tutorials provided in Canvas. In your lab report, include a short description of your experience and any challenges you encountered. If you were unable to complete a step, let us know how you attempted to troubleshoot and what questions remain.
+Search and locate instructions for connecting to UW networks. Add the "University of Washington" network to your wpa_supplicant.conf.
+Pay attention to the setup instructions for networks that do not rely on encryption.
+Without a browser to authenticate with your NetID, you will need to manually register your Pi to the campus network. You can find instructions on the UW Networks web page.
+From the command prompt of the Raspberry Pi, run the commands wpa_cli status and wpa_cli list_networks. Include the output in your lab report.
+From the command prompt of the Raspberry Pi, run the command echo $SSH_CLIENT to view the SSH_CLIENT environment variable. What information is being provided to you here.
+From the command prompt of the Raspberry Pi, run the command traceroute www.raspbian.org. Compare this output to the same command (tracert for Windows users) run from a local terminal.
+What is this command showing you?
+How might it be useful for troubleshooting network issues?
