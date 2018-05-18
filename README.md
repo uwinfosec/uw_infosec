@@ -18,5 +18,5 @@ This repo may be used by any student or instructor associated with the Universit
 > Instructors, students, TAs or other people associated with the University of Washington or the UW Infosec Advisory Council may contribute new modules in order to ensure that the courses remain relevant and useful to students in perpetuity.  Contributions should follow the same format as the rest of the repo, and should be done in the form of 2 hour "modules" such that they may be integrated into existing courses more easily.
 
 ## Authors
-> This repo and the UW Infosec Advisory Council were formed as an Informatics Capstone project in 2018 by **Sean Yeager**, **Carson McBride**, **Changhwan Oh**, and **Belinda Nanggala** in an effort to refresh the IAC track and ensure its effectiveness and longevity in the future.
+This repo and the UW Infosec Advisory Council were formed as an Informatics Capstone project in 2018 by **Sean Yeager**, **Carson McBride**, **Changhwan Oh**, and **Belinda Nanggala** in an effort to refresh the IAC track and ensure its effectiveness and longevity in the future.
 
