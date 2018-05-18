@@ -1,4 +1,4 @@
-# uw_infosec
+# UW Infosec
 
 The purpose of this repository is to be a unified, single source for instruction materials for courses relating to the **Information Assurance and Cybersecurity** (IAC) track of the Informatics Major at University of Washington.  This repo contains documentation for all coursework, labs, homeworks, and instruction materials for use by instructors and students to facilitate the running of these classes.
 
