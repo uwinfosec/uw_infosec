@@ -68,6 +68,7 @@
 * Beginner Linux course - https://www.udemy.com/learn-linux-in-5-days/learn/v4/overview
 * Reverse Engineering (Intermediate) - https://www.udemy.com/reverse-engineering-and-exploit-development/learn/v4/overview
 * Ethical Hacking course (Beginner) - https://www.udemy.com/penetration-testing/learn/v4/overview
+* Linux Security (Beginner) - https://www.udemy.com/linux-security/learn/v4/overview
 
 ## CTF
 * https://rpis.ec/calendar
