@@ -1,0 +1,41 @@
+## HW3 - Advanced XSS Payloads Homework Grading (40 points total)
+
+Keep the following in mind: 
+
+- The XSS vulnerability you will be using to deliver each of the payloads below is located at: https://xss.websecurity.church/0/login
+- Your final payload must be in the form of a link you can email someone, like the deliverables for HW 2.
+- Make sure to look at the slide deck from Thursday week 3's lecture and know how to use the tool located at: https://r7.io/exfil_create
+- The login page should not display the error message saying "[...] does not appear in the system" or it will arouse suspicion in the victim. Your payload should automatically clear the error message when the page first loads.
+
+### Payload 1 - Altering Form Submission (10 points)
+
+For this challenge your JavaScript payload will need to automatically alter the login form so that when the victim submits the form it will send the password to your capture page on https://r7.io/e/[token_or_net-id]. Make sure to automatically remove the error message to increase stealth. Two things to keep in mind: 1) a form can submit it's contents to other domains by changing a particular parameter in the HTML and 2) the exfiltration site only stores what is given to it via the "s" parameter. It's fine if the victim ends up on the https://r7.io/e/[token_or_net-id] domain.
+
+The scenario is: you send the link to a victim via email, they click on the link and are taken to the real login page, they think "oh hey I need to log in" and type in their username and password and hit submit. Without knowing it the _password_ is sent off to your exfiltration site where you can retrieve it. You are assuming you already know their username which is probably their email, because it pretty much always is.
+
+### Payload 2 - Redirect to Fake Form (15 points)
+
+For this payload you need to provide a URL that redirects the victim from the https://xss.websecurity.church domain to an identical looking login form that is hosted somewhere you control. You can use your UW provided hosting or wherever as long as you can legally host a page there. The login page you redirect to should look identical to the one you are redirecting them from. When the victim clicks submit their credentials should be sent to the https://r7.io/e/[token_or_net-id] website. However, the page _should not_ redirect to the exfiltration site.
+
+The scenario is: you send a link to a victim via email, they click on the link and are taken to the login page, the page appears to suddenly reload, but everything on the page looks the same so they don't think anything of it. They proceed to type in their username and password and when they hit submit the credentials are sent to the exfiltration site and they are on the same page.
+
+### Payload 3 - Exfiltrate Session Cookie (5 points)
+
+For this payload you need to exfiltrate the victim's session cookie. When the user clicks on your malicious link they should be taken to the login page, the error message should not be visible (don't tip them off that something is wrong), and the session cookie should be sent off to your exfiltration storage.
+
+### Payload 4 - Steal Admin Secrets (10 points)
+
+For this payload you will need to steal the admin secrets located at https://xss.websecurity.church/admin/secrets. If you go to that page and view the HTML you can see there is an HTML element with the id "secrets" and a message. When the admin goes to that page they see their super secret message, but you can't see it because you're not an admin (sad!). You need to craft a payload that automatically grabs the contents of that HTML element on that page and sends the message off to your exfiltration storage. The reason your payload will be able to grab the secret is your JavaScript is running in the Admin's browser which is logged in and has access to the secrets.
+
+The scenario is: you send a link to the admin via email, they click the link, your payload is triggered, it goes and fetches the contents of the "secrets" element on the /admin/secrets page, and sends it off to your exfiltration page at: https://r7.io/e/[token_or_net-id]. Make sure the error message above the login prompt isn't visible. The Admin has a keen eye.
+
+### Deliverables
+The URLs for Part 1 through 4 should be in one file in .txt format (no Word Docs, PDFs, RTFs, or anything other than a .txt)!
+
+### Due Date
+23:59 Friday April 20th 2018
+
+### Note
+Please include links to any pages, guides, tutorials, people, or anything you used to help you figure out these challenges. Please do not cheat or trade answers! If you gently/fairly help one another out make sure to credit the people that helped you in your report. Give credit where credit is due.
+
+No automated tools!
