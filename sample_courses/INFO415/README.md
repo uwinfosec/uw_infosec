@@ -131,4 +131,3 @@ Grade breakdown:
 - La - Review web app practice pentest HW
 - Th - Final
 
-## Final will be on the last day of class [2 hrs]
