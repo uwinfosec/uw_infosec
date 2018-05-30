@@ -1,4 +1,3 @@
-
 ```
     _____   ____________     __ __ _________
    /  _/ | / / ____/ __ \   / // /<  / ____/
@@ -96,7 +95,7 @@ Grade breakdown:
 ## Week 6 - SQLi
 - Tu - Advanced SQLi
 - La - SQLi to full control
-- Th - Review for Midterm
+- Th - Testing Techniques, Review for Midterm
 - HW - Study for Midterm
 - Reading
 	- WAHH chapter 6
@@ -123,6 +122,7 @@ Grade breakdown:
 - La - Blockchain technologies
 - Th - Cryptozombies + blockchain technologies
 - HW - Ethereum contract exploitation
+	- https://blockchain-ctf.securityinnovation.com/#/
 - Reading
 	- TBD
 
