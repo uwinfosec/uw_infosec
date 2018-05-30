@@ -1,0 +1,23 @@
+QZ5 - Week 6 - XSS and SQLi
+
+This quiz must be taken alone, without help from other students. You are allowed to reference notes, readings, lecture slides, and the general internet. No communication direct or otherwise with other students.
+
+Each response should be around a paragraph and should be geared to a fellow student who is not in the class - technical but not security knowledgeable.
+
+XSS - 3pts
+What is Cross-Site Scripting (XSS) and how does it occur?
+
+XSS - 3pts
+Why is Cross-Site Scripting (XSS) bad? Why should a developer care if they have an XSS vulnerability in their application?
+
+XSS - 3pts
+What can be done to mitigate Cross-Site Scripting (XSS)?
+
+SQLi - 3pts
+What is SQL injection (SQLi) and how does it occur?
+
+SQLi - 3pts
+Why is SQL injection (SQLi) bad? Why should a developer care if they have a SQLi vulnerability in their application?
+
+SQLi - 3pts
+What can be done to mitigate SQL injection (SQLi)?

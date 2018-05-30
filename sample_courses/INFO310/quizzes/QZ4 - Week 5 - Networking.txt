@@ -1,0 +1,35 @@
+QZ4 - Week 5 - Networking
+
+All of the questions should only require a paragraph to answer. Be concise and descriptive like you were describing the issues to a fellow iSchool student who has not taken this class, so technical but not security competent.
+
+DNS - 4pts
+Describe DNS. Make sure to include the following:
+
+What is DNS?
+How does it work?
+What purpose does it serve?
+Why is the security of DNS important?
+
+IP Address - 4pts
+Describe an IP address. Make sure to include the following:
+
+What is an IP address?
+What layer of the OSI model does it correspond to?
+What are the characteristics/properties of an IP address?
+What purpose does it serve?
+
+MAC Address - 4pts
+Describe a MAC address. Make sure to include the following:
+
+What is a MAC address?
+What layer of the OSI model does it correspond to?
+What are the characteristics/properties of a MAC address?
+What purpose does it serve?
+
+MITM Attack - 8pts
+Describe a MITM attack (1 attacker, 1 victim, one router, local network, 2 way poison). Make sure to include the following:
+
+What is a MITM attack?
+How is it performed?
+What does a MITM attack allow an attacker to do?
+What are factors that may mitigate what an attacker can do in a MITM attack?

@@ -1,0 +1,27 @@
+QZ6 - Week 7 - Buffer Overflows
+
+Each response should be around a paragraph and should be geared to a fellow student who is not in the class - technical but not security knowledgeable.
+
+Question 1 - 3pts
+At a high level, what does it mean to "smash the stack"? What can someone do if they smash the stack?
+
+Question 2 - 4pts
+At a high level, what is a buffer overflow attack?
+
+Question 3 - 3pts
+What characteristics of memory management make a buffer overflow attack possible? How does a buffer overflow work?
+
+Question 4 - 2pts
+What are important considerations to keep in mind when crafting a buffer overflow attack?
+
+Question 5 - 2pts
+What programming mistakes make a buffer overflow attack possible?
+
+Question 6 - 2pts
+Why are buffer overflow attacks bad?
+
+Question 7 - 2pts
+What can be done by a programmer to prevent a buffer overflow attack?
+
+Question 8 - 2pts
+What can be done by the operating system to prevent a buffer overflow attack?

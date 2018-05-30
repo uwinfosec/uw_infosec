@@ -1,0 +1,19 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+I recently learned that:
+
+2 + 2 = 5 
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG/MacGPG2 v2
+Comment: GPGTools - https://gpgtools.org
+
+iQEcBAEBCgAGBQJYilYDAAoJEPI+7G/WDVmjEigH/1RNa4uSnJLAnUFyT+7ZoeFl
+ozkogqwsrdtcGjBY9C3JjApWQvBt9EOougkK5mSLL0/YVZ9RBCrwscvXdcOUIVW5
+bec7Zta5TTZo6b4Mbu/OV++J7I8e46KUzbqy7bjEQzMiP1G67VolabAnjqTZJEay
+JeROXE3yFZjb7Blm4K+BEu5LgWEX09Nos0bU+cqjLvmGX4raxeoMkLelHxrIkR2z
+kT2NohifdIIr1ZdBFduIY5KpFk9Za/DmmyAvgLGYzL7fPU8OvKot6q5UiZ++KkLv
+YIYURKfS7zsJ8Q9XR4uusVz9kyMMwI94NA1820IA+34Zqskkh1ZOY7BRnoVUYRU=
+=qLEP
+-----END PGP SIGNATURE-----

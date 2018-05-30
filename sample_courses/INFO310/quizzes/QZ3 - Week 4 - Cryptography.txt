@@ -1,0 +1,18 @@
+QZ3 - Week 4 - Cryptography
+
+All of the questions should only require a paragraph to answer. Be concise and descriptive like you were describing the issues to a fellow iSchool student who has not taken this class, so technical but not security competent.
+
+Question 1
+	Describe the differences between symmetric and asymmetric cryptography.
+
+Question 2
+	Describe the important properties of a cryptographically secure hashing algorithm (for security use).
+
+Question 3
+	Describe how cryptographic signatures work and how they ensure message integrity and signer authentication.
+
+Question 4
+	Describe how a hash is "cracked."
+
+Question 5
+	Describe what entropy is, how a computer generates entropy, how it is used, and why it is important.

@@ -1,0 +1,36 @@
+QZ1 - Week 2 - Threat Modeling and Enterprise Policies
+
+This quiz must be taken alone, without help from other students. You are allowed to reference notes, readings, lecture slides, and the general internet. No communication direct or otherwise with other students.
+
+Question 1
+	Describe an threat model (in an information security context, as it has been defined in this class). Only a few sentences are needed for each sub-question below.
+		- What is it?
+		- Why is it important?
+
+Question 2
+	Describe an asset (in an information security context, as it has been defined in this class). Only a few sentences are needed for each sub-question below.
+		- What is it?
+		- Why is it important?
+		- What is its role in threat modeling?
+
+Question 3
+	Describe a component (in an information security context, as it has been defined in this class). Only a few sentences are needed for each sub-question below.
+		- What is it?
+		- How is it identified?
+		- Why is it important?
+		- What is its role in threat modeling?
+
+Question 4
+	Describe a role (in an information security context, as it has been defined in this class). Only a few sentences are needed for each sub-question below.
+		- What is it?
+		- Why is it important?
+		- What is its role in threat modeling?
+
+Question 5
+	Describe an activity matrix (in an information security context, as it has been defined in this class). Only a few sentences are needed for each sub-question below.
+		- What is it?
+		- Why is it important?
+		- What is its role in threat modeling?
+
+Question 6
+	In a couple sentences - what is a threat? (in an information security context, as it has been defined in this class)

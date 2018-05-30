@@ -1,0 +1,18 @@
+QZ7 - Week 8 - Authentication
+
+Each response should be around a paragraph and should be geared to a fellow student who is not in the class - technical but not security knowledgeable.
+
+Question 1 - 3pts
+What is the difference between authentication and authorization?
+
+Question 2 - 3pts
+Why is authentication important?
+
+Question 3 - 4pts
+What are the three factors of authentication? What distinguishes each factor from the others?
+
+Question 4 - 4pts
+From a high level - why does 2 factor authentication provide greater protection? Why is it used for high-security applications?
+
+Question 5 - 4pts
+When building a web-based authentication system (i.e. login form) what are at least 4 important requirements to verify and why? Include the thing that should be verified and the reason why. An example (and you can't use this one): Verify the login form uses paramertized SQL queries to perform user credential lookups. Using paramertized SQL queries prevents SQL injection.
