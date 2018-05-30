@@ -1,0 +1,23 @@
+QZ8 - Week 9 - Social Engineering and Opsec
+
+This quiz must be taken alone, without help from other students. You are allowed to reference notes, readings, lecture slides, and the general internet. No communication direct or otherwise with other students.
+
+Each response should be around a paragraph and should be geared to a fellow student who is not in the class - technical but not security knowledgeable.
+
+SE - 3pts
+At a high level - what is social engineering?
+
+SE - 4pts
+How is social engineering performed? Why is it bad?
+
+SE - 2pts
+If someone was going to engage in a social engineering attack what are a few helpful tips you would give them?
+
+SE - 4pts
+What are a few things an organization can do to protect itself from social engineering? What are some challenges associated with mitigating social engineering attacks?
+
+Opsec - 4pts
+What are 3 things your grandparents can do to decrease their risk of being hacked? Why did you choose those three tips?
+
+Opsec - 4pts
+Because your friends are more computer savvy then your grandparents (generally), what are 3 additional tips you would give a friend of yours to lower their risk of being hacked? Why did you choose those three tips?
