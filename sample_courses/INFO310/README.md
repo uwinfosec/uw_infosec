@@ -13,14 +13,10 @@ This course will cover theoretical and practical topics in cybersecurity as it r
 
 # Grading
 Grade breakdown:
-- hw: 54%
-- quizes: 24%
-- final: 22%
+    TBD by professor
 
 Late penalty:
-- Applies to quizzes and assignments 
-- Point ceiling goes down 10% daily, in 10% steps (24hrs from time due)
-- Stops at 50% deduction
+    TBD by professor
 
 Reading:
 - We will rely on a variety of online sources for information
@@ -60,7 +56,7 @@ Correspondence:
 
 ## Week 3 - Malware
 - Tu - Malware
-- La - TBD
+- La - Steganography
 - Th - Forensics and IR
 - Qz - On this week's topics
 - HW - TBD
