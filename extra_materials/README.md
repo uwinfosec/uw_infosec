@@ -7,7 +7,7 @@
 A Note on Extra Resources
 ----------------------------
 
-In the InfoSec industry it's extremely easy to get overwhelmed by the amount of paths and resources available. Take this popular GitHub with a lot of resources: https://github.com/Hack-with-Github/Awesome-Hacking for example. After viewing it, you'll likely still be equally unsure of what to study in order to learn about an InfoSec path you're interested in. So a structured repository doesn't help, what does?
+In the InfoSec industry it's extremely easy to get overwhelmed by the amount of paths and resources available. Take [this popular GitHub with a lot of resources](https://github.com/Hack-with-Github/Awesome-Hacking) for example. After viewing it, you'll likely still be equally unsure of what to study in order to learn about an InfoSec path you're interested in. So a structured repository doesn't help, what does?
 
 Whenever we want to learn a new skill, we wait until motivation strikes us and set to work for a few hours, checking our phones and getting distracted along the way. This might work for some of us, but we encourage a different approach, specifically the 30-Hour Deep Work Approach.
 
@@ -23,7 +23,7 @@ For example, let's say you want to learn more about ARM Exploitation. After look
 
 Here's what it might look like for ARM Exploitation:
 
-**Session 1: Information Gathering and Reading
+**Session 1: Information Gathering and Reading**
 
 * Read [Introduction to Assembly Basics tutorial](https://azeria-labs.com/writing-arm-assembly-part-1/) (Part 1 – 7)
 * Read [Process Memory and Memory Corruptions on ARM] (https://azeria-labs.com/process-memory-and-memory-corruption/)
@@ -31,25 +31,25 @@ Here's what it might look like for ARM Exploitation:
 * Read about writing ARM Shellcode ([Execve Shell](https://azeria-labs.com/writing-arm-shellcode/), [Bind Shell](https://azeria-labs.com/tcp-bind-shell-in-assembly-arm-32-bit/), [Reverse Shell](https://azeria-labs.com/tcp-reverse-shell-in-assembly-arm-32-bit/)) if you want to use your own shellcode
 * Have the [ARM reference manual](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0068b/index.html) handy in case you need to look something up
 
-**Session 2: Setting up the Environment & Goal Setting
+**Session 2: Setting up the Environment & Goal Setting**
 
 * Set up your ARM environment. Wait, AzeriaLabs did it for you! Just download the [Azeria-Labs Lab VM](https://azeria-labs.com/arm-lab-vm/)
 * Get familiar with [GDB/GEF](https://azeria-labs.com/debugging-with-gdb-introduction/)
 * Use the rest of the time to google and look up the usage of common tools like objdump, strace, as, ld.
 
-**Session 3: First Steps – start simple
+**Session 3: First Steps – start simple**
 
 * Start practicing with simple Stack Overflow challenges and read [this guide](https://azeria-labs.com/part-3-stack-overflow-challenges/) on how to get started. You can get the source code from [exploit-exercises.com](https://exploit-exercises.com/protostar/) and compile them inside your ARM environment
 
-**Session 4: Continue with Session 3 if not completed
+**Session 4: Continue with Session 3 if not completed**
 
-**Session 5: Solve ARM challenges
+**Session 5: Solve ARM challenges**
 
 * Once you’re done with simple stack overflow challenges, you can get more advanced challenges at [root-me.org](https://www.root-me.org/?page=recherche&lang=en&recherche=ARM)
 
-**Session 6: Continue solving advanced challenges
+**Session 6: Continue solving advanced challenges**
 
-**Session 7: Continue solving advanced challenges
+**Session 7: Continue solving advanced challenges**
 
 #### Share!
 
