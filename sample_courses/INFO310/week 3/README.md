@@ -4,11 +4,20 @@ One of the most common steganography tricks is to hide a file inside of an image
 
 The reason this works is because when an image file is read it has starting and ending bytes dictating the size of the image. The image viewer that you use will use the information between these bytes to present an image to you, ignoring anything after the terminating byte.
 
-For example, The terminating byte for a JPEG is FF D9 in hex, so using a hex viewer (xxd is good for linux, or something like HxD for windows) you can find out where the image finishes. These bytes are sometimes hard to find in a sea of numbers though, so looking at the dump of the hex (the text representing the hex bytes) can also help you find hidden .txt or .zip files.
+For example, The terminating byte for a JPEG is `FF D9` in hex, so using a hex viewer (`xxd` is good for linux, or something like `HxD` for windows) you can find out where the image finishes. These bytes are sometimes hard to find in a sea of numbers though, so looking at the dump of the hex (the text representing the hex bytes) can also help you find hidden .txt or .zip files. If you want that sea of numbers though, you can use `hexdump` in Linux.
 
 ## easy.jpg
 
-Let's apply this with a pretty straightforward example. See if you can find FF D9 to where this file ends and a new one begins. Use the " strings [Filename.extension] " command to confirm your suspicions aobut there being something fishy in there. But how to extract it... There is a tool on Linux for this called dd , but it only takes decimal values.
+Let's apply this with a pretty straightforward example. 
+
+![](easy.jpg)
+
+See if you can find `FF D9` to where this file ends and a new one begins. Use the strings command to confirm your suspicions aobut there being something fishy in there. 
+
+```bash
+strings [Filename.extension]
+```
+But how to extract it... There is a tool on Linux for this called `dd` , but it only takes decimal values. If you can get the hex address of where the zip file begins, then you can use `dd` to write it to a new zip file and extract the secret contents!
 
 ## doge_stege.png
 
@@ -109,7 +118,7 @@ And modify our bash script accordingly:
 $ for i in {0..128}; do ./change_palette.py doge_stege.png "range-color-127+${i}.png" "${i}"; done
 ```
 
-In e.g. `range-color-127+54.png`, the full message becomes readable:
+In `range-color-127+54.png`, the full message becomes readable:
 
 ![](range-color-127+54.png)
 
