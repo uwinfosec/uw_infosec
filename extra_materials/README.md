@@ -4,11 +4,63 @@
 * **UW ISACA Student Group (iSchool)**
 * **Batman's Kitchen (CSE) https://uwctf.cs.washington.edu/**
 
-## U WANNA BE A HACKER?
-### Read this - http://catb.org/~esr/faqs/hacker-howto.html
+A Note on Extra Resources
+----------------------------
 
+In the InfoSec industry it's extremely easy to get overwhelmed by the amount of paths and resources available. Take [this popular GitHub with a lot of resources](https://github.com/Hack-with-Github/Awesome-Hacking) for example. After viewing it, you'll likely still be equally unsure of what to study in order to learn about an InfoSec path you're interested in. So if a structured repository doesn't help, what does?
+
+Whenever we want to learn a new skill, we wait until motivation strikes us and set to work for a few hours, checking our phones and getting distracted along the way. This might work for some of us, but we encourage a different approach (one that doesn't rely on these rare motivation bursts), specifically the 30-Hour Deep Work Approach.
+
+The goal is to spend 30 hours of deliberate learning on a topic. Deliberate learning is meant to be uncomfortable; it's essentially the process of continually failing so you learn from your mistakes. While unpleasant, research has shown it is the single most consistent quality that experts possess, no matter the field.
+
+Split your 30 hours into about seven easy-to-digest 4-hour sessions (not accounting for buffers). If you schedule time for just two a week, you'll be 30 hours deep in a topic in under a month. The key is to clearly define what you're going to be doing for each one of those sessions, so you can schedule them easily. Don't worry if you can't schedule all seven at once! As you learn more about a topic your priorities might change, which is natural.
+
+### Student Contributions
+
+Students can contribute to this section once they do a deep dive into a topic and complete a learning plan. This can be part of a professor sponsored Independent Research Study or can be completely seperate. 
+
+For example, let's say you want to learn more about ARM Exploitation. After looking in the Low-level exploitation section of this repository you quickly discover there aren't any resources on it in the iSchool. Since this is something you really want to get into, you take it upon yourself to learn through online resources. You clone the repository, make a directory under low-level exploitation titled "ARM" and start planning for your 30-Hour Approach.
+
+Here's what your plan might look like for ARM Exploitation:
+
+**Session 1: Information Gathering and Reading**
+
+* Read [Introduction to Assembly Basics tutorial](https://azeria-labs.com/writing-arm-assembly-part-1/) (Part 1 – 7)
+* Read [Process Memory and Memory Corruptions on ARM] (https://azeria-labs.com/process-memory-and-memory-corruption/)
+* Go through the [Exploitation on ARM-based Systems slides](https://github.com/sashs/arm_exploitation) by Sascha Schirra
+* Read about writing ARM Shellcode ([Execve Shell](https://azeria-labs.com/writing-arm-shellcode/), [Bind Shell](https://azeria-labs.com/tcp-bind-shell-in-assembly-arm-32-bit/), [Reverse Shell](https://azeria-labs.com/tcp-reverse-shell-in-assembly-arm-32-bit/)) if you want to use your own shellcode, which you probably do because you're 1337.
+* Have the [ARM reference manual](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0068b/index.html) handy in case you need to look something up
+
+**Session 2: Setting up the Environment & Goal Setting**
+
+* Set up your ARM environment. Wait, AzeriaLabs did it for you! Just download the [Azeria-Labs Lab VM](https://azeria-labs.com/arm-lab-vm/)
+* Get familiar with [GDB/GEF](https://azeria-labs.com/debugging-with-gdb-introduction/)
+* Use the rest of the time to google and look up the usage of common tools like objdump, strace, as, ld.
+
+**Session 3: First Steps – start simple**
+
+* Start practicing with simple Stack Overflow challenges and read [this guide](https://azeria-labs.com/part-3-stack-overflow-challenges/) on how to get started. You can get the source code from [exploit-exercises.com](https://exploit-exercises.com/protostar/) and compile them inside your ARM environment.
+
+**Session 4: Continue with Session 3 if not completed**
+
+**Session 5: Solve ARM challenges**
+
+* Once you’re done with simple stack overflow challenges, you can get more advanced challenges at [root-me.org](https://www.root-me.org/?page=recherche&lang=en&recherche=ARM)
+
+**Session 6: Continue solving advanced challenges**
+
+**Session 7: Continue solving advanced challenges**
+
+#### Share!
+
+Once you've done yourself a favor and learned something awesome, share it with us and future iSchool students! Your work plans will help others learn and shape future IAC track classes and cirriculum that guest lectures can use.
+
+[Credit to AzeriaLabs](https://azeria-labs.com/the-importance-of-deep-work-the-30-hour-method-for-learning-a-new-skill/)
 
 ## FREE Training / Wargames
+
+### U WANNA BE A HACKER?
+#### Read this - http://catb.org/~esr/faqs/hacker-howto.html
 
 1. https://www.vulnhub.com/
 2. http://overthewire.org/wargames/
