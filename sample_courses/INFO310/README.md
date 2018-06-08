@@ -7,7 +7,7 @@
     /\_____\\ \_\ \_\\ \_\    \ \_____\   \ \____/   \ \_\\ \____/
     \/_____/ \/_/\/_/ \/_/     \/_____/    \/___/     \/_/ \/___/ 
                                                                    
----------------- Cyber Security and Info Assurance ----------------
+------------ Cybersecurity and Information Assurance ------------
 
 ``` 
 
@@ -16,53 +16,52 @@ This course will cover theoretical and practical topics in cybersecurity as it r
 
 # Grading
 Grade breakdown:
-    TBD by professor
+- TBD by Professor
 
 Late penalty:
-    TBD by professor
+- TBD by Professor
 
 Reading:
 - We will rely on a variety of online sources for information
 - Reading assignments will be sent out on a weekly basis
 
 Correspondence:
-- Please only use your UW email account for security reasons - I don't want a FERPA violation
-- Write: "INFO 310 - (your subject header here)" in the subject line so I can filter it out
+- TBD by Professor
 
 # Weekly Schedule
 
-## Week 1 - Overview
+## Week 1 - Overview, Policy, Threat Modeling, and The Mindset
 - Tu - Me, class policies, terminology, industry overview, ethics
-- La - Break into groups, find a breach report
-- Th - The early history of hackers
-- HW - None
-- Reading -
+- Th - Threat modeling, class scenarios
+- La - Threat model a real application - The Silk Road 3.0
+- Qz - On this week's topics
+- HW - Breach report report
+- Reading - 
     - Max Headroom Hack - https://motherboard.vice.com/read/headroom-hacker
     - The Morris Worm - https://www.washingtonpost.com/news/the-switch/wp/2013/11/01/how-a-grad-student-trying-to-build-the-first-botnet-brought-the-internet-to-its-knees/
     - A Flaw in the Design - http://www.washingtonpost.com/sf/business/2015/05/30/net-of-insecurity-part-1/
     - A Long Life of a Quick Fix - http://www.washingtonpost.com/sf/business/2015/05/31/net-of-insecurity-part-2/
     - A Disaster Foretold and Ignored - http://www.washingtonpost.com/sf/business/2015/06/22/net-of-insecurity-part-3/
     - "Hacker's Manifesto" - http://phrack.org/issues/7/3.html
-
-## Week 2 - Policy, Threat Modeling, and The Mindset
-- Tu - Threat modeling, class scenarios
-- La - Threat model a real application - The Silk Road 3.0
-- Th - Enterprise policies
-- Qz - On this week's topics
-- HW - Breach report report
-- Reading - 
     - http://www.washingtonpost.com/sf/business/2015/05/30/net-of-insecurity-part-1/
     - http://www.washingtonpost.com/sf/business/2015/05/31/net-of-insecurity-part-2/
     - http://www.washingtonpost.com/sf/business/2015/06/22/net-of-insecurity-part-3/
     - http://www.washingtonpost.com/sf/business/2015/07/22/hacks-on-the-highway/
     - http://www.washingtonpost.com/sf/business/2015/11/05/net-of-insecurity-the-kernel-of-the-argument/
 
+## Week 2 - Risk Management and Policy
+- Tu - Risk Management
+- La - Policy
+- Th - Enterprise policies
+- Qz - On this week's topics
+- HW - Breach Report Report
+
 ## Week 3 - Malware
 - Tu - Malware
 - La - Steganography
 - Th - Forensics and IR
 - Qz - On this week's topics
-- HW - TBD
+- HW - Threat Analysis Report
 - Reading -
    - Stuxnet - https://www.wired.com/2011/07/how-digital-detectives-deciphered-stuxnet/
    - Duqu - https://www.wired.com/2011/10/son-of-stuxnet-in-the-wild/
@@ -74,7 +73,7 @@ Correspondence:
 
 ## Week 4 - Cryptography
 - Tu - Crypto introduction
-- La - Canceled. Go home and re-watch any videos that you found confusing. 
+- La - Crypto Lab
 - Th - Crypto applied
 - Qz - On this week's topics
 - HW - Let's do some crypto
@@ -93,8 +92,9 @@ Correspondence:
   - https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing/
   - https://jvns.ca/networking-zine.pdf
 
+## Week 6 - Networking Attacks
 
-## Week 6 - Web Applications
+## Week 7 - Web Applications
 - Tu - Web technologies and XSS
 - La - HTTP by hand
 - Th - SQL injection
@@ -111,7 +111,7 @@ Correspondence:
 - La - Extended lecture
 - Th - Buffer overflows
 - Qz - On this week's topics
-- HW - No required HW
+- HW - Buffer Overflows Checkpoint 1 (first 2 problems)
 - Reading -
   - http://phrack.org/issues/49/14.html
   - https://avicoder.me/2016/02/01/smashsatck-revived/
@@ -122,7 +122,7 @@ Correspondence:
 - La - Canceled
 - Th - Optional hackathon event
 - Qz - On this week's topics
-- HW - No HW
+- HW - Buffer Overflows Checkpoint 2 (rest of assignment)
 - Reading -
   - http://users.csc.calpoly.edu/~jdalbey/SWE/Papers/THERAC25.html
   - http://seeri.etsu.edu/SECodeCases/ethicsC/PatriotMissile.htm
@@ -130,10 +130,10 @@ Correspondence:
 
 ## Week 9 - Social Engineering and Opsec
 - Tu - Social Engineering
-- La - Canceled
+- La - Phiish Your Professor Help
 - Th - Personal operational security
 - Qz - On this week's topics
-- HW - Case a place
+- HW - Phish Your Professor
 - Reading -
   - https://www.wired.com/2012/08/apple-amazon-mat-honan-hacking/all/
   - https://www.wired.com/2012/09/cosmo-the-god-who-fell-to-earth/
