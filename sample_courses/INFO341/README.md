@@ -61,7 +61,7 @@ This course is intended to develop the foundation technical knowledge and skills
 
 ## Week 8 - Network Programming I
 - Lecture 1 - Python basics
-- La - Authentication 2.0, OAuth 1.0, and business logic attacks
+- La - None
 - Lecture 2 - Python Simple Client & Server interaction
 - HW - Interact with POP3 server and send email with python
 
@@ -69,9 +69,9 @@ This course is intended to develop the foundation technical knowledge and skills
 - Lecture 1 - Header & Banner grabbing techniques with python
 - La - BitTorrent Detection with Python
 - Lecture 2 - Capture packets with python like Wireshark
-- HW - BitTorrent Detection with Python
+- HW - Responder Detection
 
 ## Week 10 - Network Programming III
 - Lecture 1 - Fuzzing with Python
-- La - Review web app practice pentest HW
-- Lecture 2 - Review for Final
+- La - Review
+- Lecture 2 - Overview / Career Advice
